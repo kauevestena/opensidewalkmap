@@ -23,7 +23,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_d6ef2c604e22fb440a4bb09ee480183b {
+                #map_66efab5974beccf89257eda90e0fbc85 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -35,13 +35,13 @@
 </head>
 <body>    
     
-            <div class="folium-map" id="map_d6ef2c604e22fb440a4bb09ee480183b" ></div>
+            <div class="folium-map" id="map_66efab5974beccf89257eda90e0fbc85" ></div>
         
 </body>
 <script>    
     
-            var map_d6ef2c604e22fb440a4bb09ee480183b = L.map(
-                "map_d6ef2c604e22fb440a4bb09ee480183b",
+            var map_66efab5974beccf89257eda90e0fbc85 = L.map(
+                "map_66efab5974beccf89257eda90e0fbc85",
                 {
                     center: [0, 0],
                     crs: L.CRS.EPSG3857,
@@ -55,9 +55,28 @@
 
         
     
-            var tile_layer_1751ae21550084adcef2622b11435f8f = L.tileLayer(
-                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 10, "maxZoom": 10, "minZoom": 2, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_d6ef2c604e22fb440a4bb09ee480183b);
+            var tile_layer_f9ba75ba29352c961a4952d100f8d26e = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png",
+                {"attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, under \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 10, "maxZoom": 10, "minZoom": 2, "noWrap": false, "opacity": 0.4, "subdomains": "abc", "tms": false}
+            ).addTo(map_66efab5974beccf89257eda90e0fbc85);
         
+    
+            var marker_eea241fe8fedace7aff1c80c568c7d56 = L.marker(
+                [-25.4295963, -49.2712724],
+                {}
+            ).addTo(map_66efab5974beccf89257eda90e0fbc85);
+        
+    
+        var popup_a90e31f7ba8fa04252b8090a38d6b417 = L.popup({"maxWidth": "100%"});
+
+        
+            var html_254376f716d76b20ac32f95dc3d04655 = $(`<div id="html_254376f716d76b20ac32f95dc3d04655" style="width: 100.0%; height: 100.0%;"><a href=https://kauevestena.github.io/opensidewalkmap_beta>Curitiba</a></div>`)[0];
+            popup_a90e31f7ba8fa04252b8090a38d6b417.setContent(html_254376f716d76b20ac32f95dc3d04655);
+        
+
+        marker_eea241fe8fedace7aff1c80c568c7d56.bindPopup(popup_a90e31f7ba8fa04252b8090a38d6b417)
+        ;
+
+        
+    
 </script>
