@@ -1,3 +1,4 @@
+from turtle import fillcolor
 import folium
 import pandas as pd
 import geopandas as gpd
@@ -13,18 +14,38 @@ m = folium.Map(
 folium.TileLayer(tiles='Stamen Toner',opacity=0.4,min_zoom=2,max_zoom=10).add_to(m)
 
 
+# CSV Columns are:
+#   city_name,center_long,center_lat,url
+
 cities_df = pd.read_csv('cities_data.csv')
 
 
-### columns are: 
-# # #   city_name,center_long,center_lat,url
+cities_gdf = gpd.GeoDataFrame(cities_df,geometry=gpd.points_from_xy(cities_df.center_long,cities_df.center_lat),crs='EPSG:4326')
 
-for city_row in cities_df.itertuples():
-    # print(city_row.url)
+weblinks = []
 
+for entry in cities_df.itertuples():
+    weblinks.append(a_href_str(entry.city_name,entry.url))
 
-    print(city_row.center_lat,city_row.center_long)
-    folium.Marker(location=[city_row.center_lat,city_row.center_long],popup=a_href_str(city_row.city_name,city_row.url)).add_to(m)
+cities_gdf['Place:'] = weblinks
+
+#800080 
+
+folium.GeoJson(
+    data=cities_gdf,
+    marker=folium.CircleMarker(
+        radius=7,
+        fill=True,
+        color='#800080',
+        fill_color='magenta',
+        fill_opacity=1,
+        ),
+    popup=folium.GeoJsonPopup(
+    fields=['Place:'],
+    # style='color:red'
+    ),
+    highlight_function=simple_highlight,
+).add_to(m)
 
 
 
