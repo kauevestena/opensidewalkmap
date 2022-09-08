@@ -1,14 +1,20 @@
+from re import T
 from turtle import fillcolor
 import folium
+from folium.plugins import Search
 import pandas as pd
 import geopandas as gpd
 from functions import *
+from insertions import *
 
 m = folium.Map(
     # min_zoom=2,
     # # crs="EPSG4326"
     # max_zoom=10,
-    tiles=None
+    tiles=None,
+    zoom_control=False,
+    min_lon=-175,
+    max_lon=175,
 )
 
 folium.TileLayer(tiles='Stamen Toner',opacity=0.4,min_zoom=2,max_zoom=10).add_to(m)
@@ -17,7 +23,7 @@ folium.TileLayer(tiles='Stamen Toner',opacity=0.4,min_zoom=2,max_zoom=10).add_to
 # CSV Columns are:
 #   city_name,center_long,center_lat,url
 
-cities_df = pd.read_csv('cities_data.csv')
+cities_df = pd.read_csv('data/cities_data.csv')
 
 
 cities_gdf = gpd.GeoDataFrame(cities_df,geometry=gpd.points_from_xy(cities_df.center_long,cities_df.center_lat),crs='EPSG:4326')
@@ -31,7 +37,7 @@ cities_gdf['Place:'] = weblinks
 
 #800080 
 
-folium.GeoJson(
+places_layer = folium.GeoJson(
     data=cities_gdf,
     marker=folium.CircleMarker(
         radius=7,
@@ -45,9 +51,17 @@ folium.GeoJson(
     # style='color:red'
     ),
     highlight_function=simple_highlight,
-).add_to(m)
+)
 
+m.add_child(places_layer)
 
-
+# the search bar:
+Search(places_layer,'city_name',position='topright',placeholder='search available locations',collapsed=True).add_to(m)
 
 m.save('index.html')
+
+
+# modifying the HTML:
+
+for insertion_point in insertions_dict:
+    replace_at_html('index.html',insertion_point,insertions_dict[insertion_point])
