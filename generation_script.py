@@ -9,12 +9,14 @@ from insertions import *
 
 m = folium.Map(
     # min_zoom=2,
-    # # crs="EPSG4326"
+    # crs="EPSG4326"
     # max_zoom=10,
     tiles=None,
     zoom_control=False,
-    min_lon=-175,
-    max_lon=175,
+    # min_lon=-175,
+    # max_lon=175,
+    control_scale=True,
+    
 )
 
 folium.TileLayer(tiles='Stamen Toner',opacity=0.4,min_zoom=2,max_zoom=10).add_to(m)
