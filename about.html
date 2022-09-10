@@ -45,7 +45,7 @@
 
     <style>
         body {
-          background-image: url('assets/sidewalk_background2.jpg');
+          background-image: url('assets/sidewalk_background3.png');
           background-repeat: no-repeat;
           background-attachment: fixed;
           background-size: cover;
@@ -66,23 +66,27 @@
     align-items: center;
         }
 
-        .container {
+        .container_v2 {
   display: flex;
   height: 100%;
   min-height: 0;
+  padding: 5px;
+}
+
+.responsive-font{
+    font-size: min(25px,2.2vw);
 }
         </style> 
 
 
-<h2><br></h2>
 
 
-<h1>
+<h1 style="font-size: min(40px,3.5vw);">
 
 
 
     <img title="OSWM Logo" src="assets/project_logo.png" alt="OSWM Logo"
-    style="vertical-align:middle" class="responsive">
+    style="vertical-align:middle; padding: 10px;" class="responsive">
 
     
 
@@ -94,19 +98,17 @@
 
 </h1>
 
-<h2><br></h2>
 
 
-<h3 style="text-align: center;color: rgb(229, 231, 128);">
+<h3 style="text-align: center;color: rgb(231, 234, 63);padding: 10px;font-size: min(30px,2.8vw);">
 
     A project focused on OpenStreetMap Sidewalk Networks Data!!
 
 </h3>
 
-<h2><br></h2>
 
 
-    <div class="row vertical-center horizontal-center container">
+    <div class="row vertical-center container_v2">
 
         <div class="col">
 
@@ -117,30 +119,51 @@
   
         </div>
 
-        <div class="col" style="font-size:2.2vw;"><span >We have a decentered structure:<br> for each location, one implementation!!<span></div>
+        <div class="col"><span class="responsive-font">We have a decentered structure:<br> for each location, one implementation!!<span></div>
 
     </div>
 
 
-    <div class="row vertical-center container">
+    <div class="row vertical-center container_v2">
 
-        <div class="col" style="font-size:2.2vw;"><span >We have a decentered structure:<br> for each location, one implementation!!<span></div>
+        <div class="col"><span class="responsive-font">Each implementation<br><a href="https://docs.google.com/presentation/d/e/2PACX-1vREy5o4tl4xt1osUidqQjImrmQDyAuh9sxAuc3SeP5jmQzAmzj5yjDrFxwN4dxMbbwnb8V0qlaCrlUn/pub?start=true&loop=false&delayms=60000#slide=id.gf4921d47bb_0_0" style="color:rgb(231, 234, 63)">is modular</a><br>so we can develop many applications<span></div>
 
         <div class="col">
 
             <a href="https://kauevestena.github.io/opensidewalkmap/">
-            <img title="OSWM Home" src="assets/images/home_img.png" alt="OSWM home img"
+                <img title="OSWM modules" src="assets/images/modules.gif" alt="OSWM modules img"
+                class="responsive" width="400">
+                </a>
+  
+        </div>
+
+
+
+    </div>
+
+    <div class="row vertical-center container_v2">
+
+        <div class="col">
+
+            <a href="https://kauevestena.github.io/opensidewalkmap/">
+            <img title="OSWM modules" src="assets/images/webmap_thumb.png" alt="OSWM modules img"
             class="responsive">
             </a>
   
         </div>
 
-
+        <div class="col"><span class="responsive-font">The main module is<br>a WEBMAP containing <br> a cartographic representation<br> with access to each feature<span></div>
 
     </div>
 
 
     <h2><br></h2>
+
+
+
+<h2 style="font-size: min(40px,3.5vw);padding-bottom: 20px;">coming soon: Tutorials on how to deploy an OSWM instance for a region!!<br></h2>
+
+<h2 style="font-size: min(30px,2.5vw);;">2022, by Kauê de Moraes Vestena<br> as part of my phd work at UFPR<br>funded by CAPES<br> follow me: @kauevestena </h2>
 
 
 </body>
