@@ -1,0 +1,49 @@
+name: regen_map
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  data_daily_updating:
+    runs-on: ubuntu-latest
+    # continue-on-error: true
+    steps:
+      #### actions/checkout ____________________________________________________
+      # @see https://github.com/actions/checkout
+      - uses: actions/checkout@v3
+
+      #### setup-python ________________________________________________________
+      # @see https://github.com/actions/setup-python
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: 'pip' # caching pip dependencies
+
+      #### setup dependencies __________________________________________________
+
+      - run: pip install -r requirements.txt
+
+
+      - run: python generation_script.py
+      
+  
+      #### upload ______________________________________________________________
+      # @see https://github.com/actions/checkout#push-a-commit-using-the-built-in-token
+      - run: |
+          DATETIME="$(TZ=":America/Sao_Paulo" date +"%Y-%m-%d")"
+          COMMIT_MESSAGE="map updating at $DATETIME"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git pull
+          git add .
+          git commit -m "$COMMIT_MESSAGE"
+          git push
