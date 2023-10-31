@@ -42,7 +42,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_91d0c6d6e4e5f45e8c483cfd35e93b82 {
+                #map_1af16f3fd85ce0172271d52a56514768 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -74,7 +74,7 @@
 <body>
     
     
-            <div class="folium-map" id="map_91d0c6d6e4e5f45e8c483cfd35e93b82" >     <a href="https://kauevestena.github.io/opensidewalkmap/about.html">
+            <div class="folium-map" id="map_1af16f3fd85ce0172271d52a56514768" >     <a href="https://kauevestena.github.io/opensidewalkmap/about.html">
 
                     <img 
                     src="assets/page_logo.png" 
@@ -93,8 +93,8 @@
 <script>
     
     
-            var map_91d0c6d6e4e5f45e8c483cfd35e93b82 = L.map(
-                "map_91d0c6d6e4e5f45e8c483cfd35e93b82",
+            var map_1af16f3fd85ce0172271d52a56514768 = L.map(
+                "map_1af16f3fd85ce0172271d52a56514768",
                 {
                     center: [0, 0],
                     crs: L.CRS.EPSG3857,
@@ -103,61 +103,61 @@
                     preferCanvas: false,
                 }
             );
-            L.control.scale().addTo(map_91d0c6d6e4e5f45e8c483cfd35e93b82);
+            L.control.scale().addTo(map_1af16f3fd85ce0172271d52a56514768);
 
             
 
         
     
-            var tile_layer_1a78eaf8ba227a8e0da5f9ce5176b3e4 = L.tileLayer(
-                "https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}{r}.{ext}",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.stadiamaps.com/\" target=\"_blank\"\u003eStadia Maps\u003c/a\u003e \u0026copy; \u003ca href=\"https://www.stamen.com/\" target=\"_blank\"\u003eStamen Design\u003c/a\u003e \u0026copy; \u003ca href=\"https://openmaptiles.org/\" target=\"_blank\"\u003eOpenMapTiles\u003c/a\u003e \u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 10, "maxZoom": 10, "minZoom": 2, "noWrap": false, "opacity": 0.4, "subdomains": "abc", "tms": false}
-            ).addTo(map_91d0c6d6e4e5f45e8c483cfd35e93b82);
+            var tile_layer_37fc0e0847b17e4050d57cf442e44537 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca target=\"_blank\" href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\"_blank\" href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 10, "maxZoom": 10, "minZoom": 2, "noWrap": false, "opacity": 0.4, "subdomains": "abc", "tms": false}
+            ).addTo(map_1af16f3fd85ce0172271d52a56514768);
         
     
-        function geo_json_fe7f6805d8bad9e7d94f344f44beba23_highlighter(feature) {
+        function geo_json_9f366131f7f576e802719be753f56139_highlighter(feature) {
             switch(feature.id) {
                 default:
                     return {"weight": 12};
             }
         }
-        function geo_json_fe7f6805d8bad9e7d94f344f44beba23_pointToLayer(feature, latlng) {
+        function geo_json_9f366131f7f576e802719be753f56139_pointToLayer(feature, latlng) {
             var opts = {"bubblingMouseEvents": true, "color": "#800080", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "magenta", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3};
             
             return new L.CircleMarker(latlng, opts)
         }
 
-        function geo_json_fe7f6805d8bad9e7d94f344f44beba23_onEachFeature(feature, layer) {
+        function geo_json_9f366131f7f576e802719be753f56139_onEachFeature(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if(typeof e.target.setStyle === "function"){
-                        geo_json_fe7f6805d8bad9e7d94f344f44beba23.resetStyle(e.target);
+                        geo_json_9f366131f7f576e802719be753f56139.resetStyle(e.target);
                     }
                 },
                 mouseover: function(e) {
                     if(typeof e.target.setStyle === "function"){
-                        const highlightStyle = geo_json_fe7f6805d8bad9e7d94f344f44beba23_highlighter(e.target.feature)
+                        const highlightStyle = geo_json_9f366131f7f576e802719be753f56139_highlighter(e.target.feature)
                         e.target.setStyle(highlightStyle);
                     }
                 },
             });
         };
-        var geo_json_fe7f6805d8bad9e7d94f344f44beba23 = L.geoJson(null, {
-                onEachFeature: geo_json_fe7f6805d8bad9e7d94f344f44beba23_onEachFeature,
+        var geo_json_9f366131f7f576e802719be753f56139 = L.geoJson(null, {
+                onEachFeature: geo_json_9f366131f7f576e802719be753f56139_onEachFeature,
             
-                pointToLayer: geo_json_fe7f6805d8bad9e7d94f344f44beba23_pointToLayer
+                pointToLayer: geo_json_9f366131f7f576e802719be753f56139_pointToLayer
         });
 
-        function geo_json_fe7f6805d8bad9e7d94f344f44beba23_add (data) {
-            geo_json_fe7f6805d8bad9e7d94f344f44beba23
+        function geo_json_9f366131f7f576e802719be753f56139_add (data) {
+            geo_json_9f366131f7f576e802719be753f56139
                 .addData(data)
-                .addTo(map_91d0c6d6e4e5f45e8c483cfd35e93b82);
+                .addTo(map_1af16f3fd85ce0172271d52a56514768);
         }
-            geo_json_fe7f6805d8bad9e7d94f344f44beba23_add({"bbox": [-77.041315, -25.4295963, -49.2712724, -12.065698], "features": [{"bbox": [-49.2712724, -25.4295963, -49.2712724, -25.4295963], "geometry": {"coordinates": [-49.2712724, -25.4295963], "type": "Point"}, "id": "0", "properties": {"Place:": "\u003ca href=\"https://kauevestena.github.io/opensidewalkmap_beta/\"\u003eCuritiba\u003c/a\u003e", "center_lat": -25.4295963, "center_long": -49.2712724, "city_name": "Curitiba", "url": "https://kauevestena.github.io/opensidewalkmap_beta/"}, "type": "Feature"}, {"bbox": [-77.041315, -12.065698, -77.041315, -12.065698], "geometry": {"coordinates": [-77.041315, -12.065698], "type": "Point"}, "id": "1", "properties": {"Place:": "\u003ca href=\"https://opensidewalkmap.github.io/lima/\"\u003eLima\u003c/a\u003e", "center_lat": -12.065698, "center_long": -77.041315, "city_name": "Lima", "url": "https://opensidewalkmap.github.io/lima/"}, "type": "Feature"}], "type": "FeatureCollection"});
+            geo_json_9f366131f7f576e802719be753f56139_add({"bbox": [-77.041315, -25.4295963, -49.2712724, -12.065698], "features": [{"bbox": [-49.2712724, -25.4295963, -49.2712724, -25.4295963], "geometry": {"coordinates": [-49.2712724, -25.4295963], "type": "Point"}, "id": "0", "properties": {"Place:": "\u003ca href=\"https://kauevestena.github.io/opensidewalkmap_beta/\"\u003eCuritiba\u003c/a\u003e", "center_lat": -25.4295963, "center_long": -49.2712724, "city_name": "Curitiba", "url": "https://kauevestena.github.io/opensidewalkmap_beta/"}, "type": "Feature"}, {"bbox": [-77.041315, -12.065698, -77.041315, -12.065698], "geometry": {"coordinates": [-77.041315, -12.065698], "type": "Point"}, "id": "1", "properties": {"Place:": "\u003ca href=\"https://opensidewalkmap.github.io/lima/\"\u003eLima\u003c/a\u003e", "center_lat": -12.065698, "center_long": -77.041315, "city_name": "Lima", "url": "https://opensidewalkmap.github.io/lima/"}, "type": "Feature"}], "type": "FeatureCollection"});
 
         
     
-    geo_json_fe7f6805d8bad9e7d94f344f44beba23.bindPopup(
+    geo_json_9f366131f7f576e802719be753f56139.bindPopup(
     function(layer){
     let div = L.DomUtil.create('div');
     
@@ -181,8 +181,8 @@
     ,{"className": "foliumpopup"});
                      
     
-            var geo_json_fe7f6805d8bad9e7d94f344f44beba23searchControl = new L.Control.Search({
-                layer: geo_json_fe7f6805d8bad9e7d94f344f44beba23,
+            var geo_json_9f366131f7f576e802719be753f56139searchControl = new L.Control.Search({
+                layer: geo_json_9f366131f7f576e802719be753f56139,
                 
                 propertyName: 'city_name',
                 
@@ -195,20 +195,20 @@
                 hideMarkerOnCollapse: true
             
                 });
-                geo_json_fe7f6805d8bad9e7d94f344f44beba23searchControl.on('search:locationfound', function(e) {
-                    geo_json_fe7f6805d8bad9e7d94f344f44beba23.setStyle(function(feature){
+                geo_json_9f366131f7f576e802719be753f56139searchControl.on('search:locationfound', function(e) {
+                    geo_json_9f366131f7f576e802719be753f56139.setStyle(function(feature){
                         return feature.properties.style
                     })
                     
                     if(e.layer._popup)
                         e.layer.openPopup();
                 })
-                geo_json_fe7f6805d8bad9e7d94f344f44beba23searchControl.on('search:collapsed', function(e) {
-                        geo_json_fe7f6805d8bad9e7d94f344f44beba23.setStyle(function(feature){
+                geo_json_9f366131f7f576e802719be753f56139searchControl.on('search:collapsed', function(e) {
+                        geo_json_9f366131f7f576e802719be753f56139.setStyle(function(feature){
                             return feature.properties.style
                     });
                 });
-            map_91d0c6d6e4e5f45e8c483cfd35e93b82.addControl( geo_json_fe7f6805d8bad9e7d94f344f44beba23searchControl );
+            map_1af16f3fd85ce0172271d52a56514768.addControl( geo_json_9f366131f7f576e802719be753f56139searchControl );
 
         
 </script>
