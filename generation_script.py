@@ -6,6 +6,7 @@ import pandas as pd
 import geopandas as gpd
 from functions import *
 from insertions import *
+import xyzservices.providers as xyz
 
 m = folium.Map(
     # min_zoom=2,
@@ -19,7 +20,7 @@ m = folium.Map(
     
 )
 
-folium.TileLayer(tiles='OpenStreetMap',opacity=0.7,min_zoom=2,max_zoom=10).add_to(m)
+folium.TileLayer(tiles=xyz.CartoDB.DarkMatter,opacity=0.5,min_zoom=2,max_zoom=10).add_to(m)
 
 #folium.TileLayer(tiles='https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}{r}.{ext}',
 #                 attr='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',

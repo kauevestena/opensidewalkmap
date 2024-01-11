@@ -1,4 +1,3 @@
+import xyzservices.providers as xyz
 
-url = 'https://kauevestena.github.io/opensidewalkmap_beta/'
-
-print(url.strip('/'))
+print(type(xyz.CartoDB.DarkMatter))
