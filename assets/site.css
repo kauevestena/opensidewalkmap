@@ -268,13 +268,9 @@ a {
 .node-panel {
   position: absolute;
   top: 112px;
-  bottom: 24px;
   left: 24px;
-  display: flex;
-  flex-direction: column;
   width: min(420px, calc(100vw - 48px));
   min-height: 0;
-  padding: 28px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -283,10 +279,84 @@ a {
   backdrop-filter: blur(22px) saturate(130%);
   -webkit-backdrop-filter: blur(22px) saturate(130%);
   pointer-events: auto;
+  transition: width 180ms ease, box-shadow 180ms ease;
+}
+
+.node-panel[open] {
+  bottom: 24px;
+}
+
+.node-panel:not([open]) {
+  width: min(286px, calc(100vw - 48px));
+}
+
+.panel-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 19px 22px;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.panel-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.panel-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+  border-radius: inherit;
+}
+
+.panel-toggle__copy,
+.panel-toggle__hint {
+  display: block;
+}
+
+.panel-toggle__hint {
+  margin-top: 6px;
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.panel-toggle__hint--expanded,
+.node-panel[open] .panel-toggle__hint--collapsed {
+  display: none;
+}
+
+.node-panel[open] .panel-toggle__hint--expanded {
+  display: block;
+}
+
+.panel-toggle__icon {
+  flex: 0 0 auto;
+  width: 20px;
+  fill: none;
+  stroke: var(--cyan);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transition: transform 180ms ease;
+}
+
+.node-panel[open] .panel-toggle__icon {
+  transform: rotate(180deg);
+}
+
+.node-panel__content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 75px);
+  min-height: 0;
+  padding: 0 28px 28px;
 }
 
 .node-panel h1 {
-  margin: 15px 0 10px;
+  margin: 6px 0 10px;
   font-size: clamp(2.15rem, 4vw, 3.25rem);
   line-height: 0.98;
   letter-spacing: -0.055em;
@@ -1248,8 +1318,21 @@ a {
     left: 9px;
     width: auto;
     max-height: min(68vh, 610px);
-    padding: 20px;
     border-radius: 24px;
+  }
+
+  .node-panel:not([open]) {
+    right: auto;
+    width: min(286px, calc(100vw - 18px));
+  }
+
+  .panel-toggle {
+    padding: 17px 19px;
+  }
+
+  .node-panel__content {
+    height: auto;
+    padding: 0 20px 20px;
   }
 
   .node-panel h1 {

@@ -20,6 +20,7 @@ const elements = {
   list: document.getElementById('node-list'),
   search: document.getElementById('node-search'),
   clear: document.getElementById('clear-search'),
+  panel: document.getElementById('node-directory'),
   mapError: document.getElementById('map-error'),
 };
 
@@ -233,10 +234,11 @@ function fitAllNodes() {
   const bounds = new maplibregl.LngLatBounds();
   state.nodes.forEach((node) => bounds.extend([node.longitude, node.latitude]));
   const mobile = window.matchMedia('(max-width: 680px)').matches;
+  const expanded = elements.panel.open;
   state.map.fitBounds(bounds, {
     padding: mobile
-      ? { top: 95, right: 35, bottom: Math.min(window.innerHeight * 0.7, 630), left: 35 }
-      : { top: 125, right: 100, bottom: 85, left: 490 },
+      ? { top: 95, right: 35, bottom: expanded ? Math.min(window.innerHeight * 0.7, 630) : 105, left: 35 }
+      : { top: 125, right: 100, bottom: 85, left: expanded ? 490 : 100 },
     maxZoom: 3.8,
     duration: 0,
   });
@@ -344,6 +346,13 @@ elements.clear.addEventListener('click', () => {
   elements.search.value = '';
   elements.search.focus();
   filterNodes();
+});
+elements.panel.addEventListener('toggle', () => {
+  if (state.map?.loaded()) fitAllNodes();
+});
+document.querySelector('.skip-link').addEventListener('click', () => {
+  elements.panel.open = true;
+  requestAnimationFrame(() => elements.search.focus());
 });
 
 initialize();

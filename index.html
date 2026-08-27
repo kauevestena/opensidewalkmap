@@ -35,30 +35,40 @@
   </header>
 
   <main id="main-content">
-    <section class="node-panel" id="node-directory" aria-labelledby="directory-title">
-      <div class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Open pedestrian infrastructure</div>
-      <h1 id="directory-title">Map the city.<br><span>Understand the walk.</span></h1>
-      <p class="panel-intro">Explore independent OSWM nodes turning OpenStreetMap data into pedestrian-network maps, diagnostics, routing and open downloads.</p>
+    <details class="node-panel" id="node-directory">
+      <summary class="panel-toggle">
+        <span class="panel-toggle__copy">
+          <span class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Open pedestrian infrastructure</span>
+          <span class="panel-toggle__hint panel-toggle__hint--collapsed">Expand to search</span>
+          <span class="panel-toggle__hint panel-toggle__hint--expanded">Collapse panel</span>
+        </span>
+        <svg class="panel-toggle__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
 
-      <div class="node-summary" aria-live="polite">
-        <strong id="node-count">—</strong>
-        <span>active nodes</span>
-        <span class="summary-divider" aria-hidden="true"></span>
-        <span>Open data · updated automatically</span>
+      <div class="node-panel__content">
+        <h1 id="directory-title">Map the city.<br><span>Understand the walk.</span></h1>
+        <p class="panel-intro">Explore independent OSWM nodes turning OpenStreetMap data into pedestrian-network maps, diagnostics, routing and open downloads.</p>
+
+        <div class="node-summary" aria-live="polite">
+          <strong id="node-count">—</strong>
+          <span>active nodes</span>
+          <span class="summary-divider" aria-hidden="true"></span>
+          <span>Open data · updated automatically</span>
+        </div>
+
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+          <label class="sr-only" for="node-search">Search available cities</label>
+          <input id="node-search" type="search" placeholder="Search a city" autocomplete="off" spellcheck="false">
+          <button id="clear-search" class="clear-search" type="button" aria-label="Clear search" hidden>×</button>
+        </div>
+
+        <div id="node-feedback" class="node-feedback" role="status">Loading the node registry…</div>
+        <div id="node-list" class="node-list" role="list" aria-label="Available OpenSidewalkMap nodes"></div>
+
+        <p class="panel-note">Select a city to locate it on the map, then open its complete pedestrian-data portal.</p>
       </div>
-
-      <div class="search-field">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
-        <label class="sr-only" for="node-search">Search available cities</label>
-        <input id="node-search" type="search" placeholder="Search a city" autocomplete="off" spellcheck="false">
-        <button id="clear-search" class="clear-search" type="button" aria-label="Clear search" hidden>×</button>
-      </div>
-
-      <div id="node-feedback" class="node-feedback" role="status">Loading the node registry…</div>
-      <div id="node-list" class="node-list" role="list" aria-label="Available OpenSidewalkMap nodes"></div>
-
-      <p class="panel-note">Select a city to locate it on the map, then open its complete pedestrian-data portal.</p>
-    </section>
+    </details>
   </main>
 
   <div class="map-key" aria-label="Map legend">

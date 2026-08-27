@@ -33,6 +33,9 @@ const siteCss = read('assets/site.css');
 const activeSite = `${indexHtml}\n${aboutHtml}\n${mapScript}\n${siteCss}`.toLocaleLowerCase();
 
 assert.match(indexHtml, /assets\/index-map\.js/, 'The index must load the map application');
+assert.match(indexHtml, /<details class="node-panel" id="node-directory">/,
+  'The node panel must use a native disclosure that is collapsed by default');
+assert.match(indexHtml, /Expand to search/, 'The collapsed node panel must include its search hint');
 assert.match(mapScript, /data\/cities_data\.csv/, 'The map application must use the node registry');
 assert.match(mapScript, /maplibre-gl@6\.6\.0\/dist\/maplibre-gl\.mjs/,
   'The map application must pin the MapLibre GL JS 6.6.0 ES module');
