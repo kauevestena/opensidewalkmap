@@ -36,6 +36,10 @@ assert.match(indexHtml, /assets\/index-map\.js/, 'The index must load the map ap
 assert.match(mapScript, /data\/cities_data\.csv/, 'The map application must use the node registry');
 assert.match(mapScript, /maplibre-gl@6\.6\.0\/dist\/maplibre-gl\.mjs/,
   'The map application must pin the MapLibre GL JS 6.6.0 ES module');
+assert.doesNotMatch(mapScript, /maplibregl\.supported\(/,
+  'The map application must not call the removed MapLibre v5 supported() API');
+assert.match(siteCss, /\.map-error\[hidden\]\s*{[^}]*display:\s*none/s,
+  'The map error must stay hidden unless map initialization fails');
 assert.match(aboutHtml, /class="about-page"/, 'The About page must use the shared design system');
 assert.doesNotMatch(activeSite, /folium|leaflet|jquery|bootstrap/, 'Legacy Folium/Leaflet dependencies must not remain in the active site');
 

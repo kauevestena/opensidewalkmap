@@ -564,6 +564,10 @@ a {
   font-size: 0.78rem;
 }
 
+.map-error[hidden] {
+  display: none;
+}
+
 .node-popup .maplibregl-popup-content {
   min-width: 210px;
   padding: 0;

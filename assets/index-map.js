@@ -244,10 +244,6 @@ function fitAllNodes() {
 
 function initializeMap() {
   try {
-    if (!maplibregl.supported()) {
-      throw new Error('WebGL is unavailable.');
-    }
-
     state.map = new maplibregl.Map({
       container: 'map',
       center: [-28, 8],
