@@ -1,278 +1,87 @@
-<!DOCTYPE html>
-<html>
-
-    
-    <head> 
-
-                        <style>
-                        .logo_img{
-                            position: fixed;
-                            left: 2px;
-                            top:  2px;
-                            z-index: 99999999999999999;
-                        }
-
-                            .responsive {
-                                max-width: 100%;
-                                height: auto;
-                                }
-                    </style>
-    
-    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_94a9f3a7666d86fda79c1a7681ce7a08 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            </style>
-
-            <style>html, body {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            </style>
-
-            <style>#map {
-                position:absolute;
-                top:0;
-                bottom:0;
-                right:0;
-                left:0;
-                }
-            </style>
-
-            <script>
-                L_NO_TOUCH = false;
-                L_DISABLE_3D = false;
-            </script>
-
-        
-    
-                    <style>
-                        .foliumpopup {
-                            margin: auto;
-                        }
-                       .foliumpopup table{
-                            margin: auto;
-                        }
-                        .foliumpopup tr{
-                            text-align: left;
-                        }
-                        .foliumpopup th{
-                            padding: 2px; padding-right: 8px;
-                        }
-                    </style>
-            
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css"/>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore OpenSidewalkMap nodes and open pedestrian-network data around the world.">
+  <meta name="theme-color" content="#08111f">
+  <title>OpenSidewalkMap | Global node index</title>
+  <link rel="icon" type="image/png" href="assets/favicon_homepage.png">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.6.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="module" src="assets/index-map.js"></script>
 </head>
-<body>
-    
-    
-            <div class="folium-map" id="map_94a9f3a7666d86fda79c1a7681ce7a08" >     <a href="https://kauevestena.github.io/opensidewalkmap/about.html">
+<body class="map-page">
+  <a class="skip-link" href="#node-directory">Skip to the node directory</a>
 
-                    <img 
-                    src="assets/page_logo.png" 
-                    alt="OSWM Project"  
-                    title="Click for more information on OSWM project!!" 
-                    class="logo_img responsive" 
-                    ></img>
+  <div id="map" role="application" aria-label="Interactive world map of OpenSidewalkMap nodes"></div>
+  <div class="map-wash" aria-hidden="true"></div>
 
-                </a>
+  <header class="site-header site-header--floating">
+    <a class="brand" href="index.html" aria-label="OpenSidewalkMap global index">
+      <img src="assets/project_logo.png" alt="" width="44" height="44">
+      <span class="brand-copy">
+        <strong>OpenSidewalkMap</strong>
+        <span>Global node index</span>
+      </span>
+    </a>
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <a class="nav-link nav-link--active" href="index.html" aria-current="page">Explore</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link nav-link--icon" href="https://github.com/kauevestena/opensidewalkmap" target="_blank" rel="noreferrer" aria-label="OpenSidewalkMap on GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.24c-3.24.7-3.92-1.38-3.92-1.38-.53-1.35-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.59-.3-5.31-1.3-5.31-5.69 0-1.26.45-2.28 1.2-3.09-.12-.29-.52-1.47.11-3.05 0 0 .98-.31 3.16 1.18a10.98 10.98 0 0 1 5.76 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.76.11 3.05.75.81 1.2 1.83 1.2 3.09 0 4.4-2.73 5.38-5.33 5.67.42.36.79 1.07.79 2.17v3.28c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+      </a>
+    </nav>
+  </header>
 
+  <main id="main-content">
+    <details class="node-panel" id="node-directory">
+      <summary class="panel-toggle">
+        <span class="panel-toggle__copy">
+          <span class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Open pedestrian infrastructure</span>
+          <span class="panel-toggle__hint panel-toggle__hint--collapsed">Expand to search</span>
+          <span class="panel-toggle__hint panel-toggle__hint--expanded">Collapse panel</span>
+        </span>
+        <svg class="panel-toggle__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
 
+      <div class="node-panel__content">
+        <h1 id="directory-title">Map the city.<br><span>Understand the walk.</span></h1>
+        <p class="panel-intro">Explore independent OSWM nodes turning OpenStreetMap data into pedestrian-network maps, diagnostics, routing and open downloads.</p>
 
-            </div> 
-        
+        <div class="node-summary" aria-live="polite">
+          <strong id="node-count">—</strong>
+          <span>active nodes</span>
+          <span class="summary-divider" aria-hidden="true"></span>
+          <span>Open data · updated automatically</span>
+        </div>
+
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+          <label class="sr-only" for="node-search">Search available cities</label>
+          <input id="node-search" type="search" placeholder="Search a city" autocomplete="off" spellcheck="false">
+          <button id="clear-search" class="clear-search" type="button" aria-label="Clear search" hidden>×</button>
+        </div>
+
+        <div id="node-feedback" class="node-feedback" role="status">Loading the node registry…</div>
+        <div id="node-list" class="node-list" role="list" aria-label="Available OpenSidewalkMap nodes"></div>
+
+        <p class="panel-note">Select a city to locate it on the map, then open its complete pedestrian-data portal.</p>
+      </div>
+    </details>
+  </main>
+
+  <div class="map-key" aria-label="Map legend">
+    <span class="map-key__marker" aria-hidden="true"></span>
+    <span>Active OSWM node</span>
+  </div>
+
+  <div id="map-error" class="map-error" role="status" hidden>
+    The interactive map is unavailable in this browser. You can still open every node from the directory.
+  </div>
+
+  <noscript>
+    <div class="noscript-message">JavaScript is required for the interactive map and node directory. The node registry remains available in <a href="data/cities_data.csv">CSV format</a>.</div>
+  </noscript>
 </body>
-<script>
-    
-    
-            var map_94a9f3a7666d86fda79c1a7681ce7a08 = L.map(
-                "map_94a9f3a7666d86fda79c1a7681ce7a08",
-                {
-                    center: [0.0, 0.0],
-                    crs: L.CRS.EPSG3857,
-                    ...{
-  "zoom": 1,
-  "zoomControl": false,
-  "preferCanvas": false,
-}
-
-                }
-            );
-            L.control.scale().addTo(map_94a9f3a7666d86fda79c1a7681ce7a08);
-
-            
-
-        
-    
-            var tile_layer_f522b45dcb65d4bbc955c8a13c203ceb = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-                {
-  "minZoom": 2,
-  "maxZoom": 10,
-  "maxNativeZoom": 10,
-  "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
-  "subdomains": "abcd",
-  "detectRetina": false,
-  "tms": false,
-  "opacity": 0.5,
-}
-
-            );
-        
-    
-            tile_layer_f522b45dcb65d4bbc955c8a13c203ceb.addTo(map_94a9f3a7666d86fda79c1a7681ce7a08);
-        
-    
-        function geo_json_a6c2346eba906e59e2ee7636582df271_highlighter(feature) {
-            switch(feature.id) {
-                default:
-                    return {"weight": 12};
-            }
-        }
-        function geo_json_a6c2346eba906e59e2ee7636582df271_pointToLayer(feature, latlng) {
-            var opts = {
-  "stroke": true,
-  "color": "#800080",
-  "weight": 3,
-  "opacity": 1.0,
-  "lineCap": "round",
-  "lineJoin": "round",
-  "dashArray": null,
-  "dashOffset": null,
-  "fill": true,
-  "fillColor": "magenta",
-  "fillOpacity": 1,
-  "fillRule": "evenodd",
-  "bubblingMouseEvents": true,
-  "radius": 7,
-};
-            
-            return new L.CircleMarker(latlng, opts)
-        }
-
-        function geo_json_a6c2346eba906e59e2ee7636582df271_onEachFeature(feature, layer) {
-
-            layer.on({
-                mouseout: function(e) {
-                    if(typeof e.target.setStyle === "function"){
-                            geo_json_a6c2346eba906e59e2ee7636582df271.resetStyle(e.target);
-                    }
-                },
-                mouseover: function(e) {
-                    if(typeof e.target.setStyle === "function"){
-                        const highlightStyle = geo_json_a6c2346eba906e59e2ee7636582df271_highlighter(e.target.feature)
-                        e.target.setStyle(highlightStyle);
-                    }
-                },
-            });
-        };
-        var geo_json_a6c2346eba906e59e2ee7636582df271 = L.geoJson(null, {
-                onEachFeature: geo_json_a6c2346eba906e59e2ee7636582df271_onEachFeature,
-            
-                pointToLayer: geo_json_a6c2346eba906e59e2ee7636582df271_pointToLayer,
-            ...{
-}
-        });
-
-        function geo_json_a6c2346eba906e59e2ee7636582df271_add (data) {
-            geo_json_a6c2346eba906e59e2ee7636582df271
-                .addData(data);
-        }
-            geo_json_a6c2346eba906e59e2ee7636582df271_add({"bbox": [-77.041315, -25.4295963, 9.1594985, 45.46129315], "features": [{"bbox": [-49.2712724, -25.4295963, -49.2712724, -25.4295963], "geometry": {"coordinates": [-49.2712724, -25.4295963], "type": "Point"}, "id": "0", "properties": {"Place:": "\u003ca href=\"https://kauevestena.github.io/opensidewalkmap_beta/\"\u003eCuritiba\u003c/a\u003e", "center_lat": -25.4295963, "center_long": -49.2712724, "city_name": "Curitiba", "url": "https://kauevestena.github.io/opensidewalkmap_beta/"}, "type": "Feature"}, {"bbox": [-77.041315, -12.065698, -77.041315, -12.065698], "geometry": {"coordinates": [-77.041315, -12.065698], "type": "Point"}, "id": "1", "properties": {"Place:": "\u003ca href=\"https://opensidewalkmap.github.io/lima/\"\u003eLima\u003c/a\u003e", "center_lat": -12.065698, "center_long": -77.041315, "city_name": "Lima", "url": "https://opensidewalkmap.github.io/lima/"}, "type": "Feature"}, {"bbox": [9.1594985, 45.46129315, 9.1594985, 45.46129315], "geometry": {"coordinates": [9.1594985, 45.46129315], "type": "Point"}, "id": "2", "properties": {"Place:": "\u003ca href=\"https://opensidewalkmap.github.io/milan/\"\u003eMilan\u003c/a\u003e", "center_lat": 45.46129315, "center_long": 9.1594985, "city_name": "Milan", "url": "https://opensidewalkmap.github.io/milan/"}, "type": "Feature"}], "type": "FeatureCollection"});
-        geo_json_a6c2346eba906e59e2ee7636582df271.setStyle(function(feature) {return feature.properties.style;});
-
-        
-    
-    geo_json_a6c2346eba906e59e2ee7636582df271.bindPopup(
-    function(layer){
-    let div = L.DomUtil.create('div');
-    
-    let handleObject = feature => {
-        if (feature === null) {
-            return '';
-        } else if (typeof(feature)=='object') {
-            return JSON.stringify(feature);
-        } else {
-            return feature;
-        }
-    }
-    let fields = ["Place:"];
-    let aliases = ["Place:"];
-    let table = '<table>' +
-        String(
-        fields.map(
-        (v,i)=>
-        `<tr>
-            <th>${aliases[i].toLocaleString()}</th>
-            
-            <td>${handleObject(layer.feature.properties[v]).toLocaleString()}</td>
-        </tr>`).join(''))
-    +'</table>';
-    div.innerHTML=table;
-    
-    return div
-    }
-    ,{
-  "className": "foliumpopup",
-});
-                     
-    
-            geo_json_a6c2346eba906e59e2ee7636582df271.addTo(map_94a9f3a7666d86fda79c1a7681ce7a08);
-        
-    
-            var geo_json_a6c2346eba906e59e2ee7636582df271searchControl = new L.Control.Search({
-                layer: geo_json_a6c2346eba906e59e2ee7636582df271,
-                
-                propertyName: 'city_name',
-                
-                collapsed: true,
-                textPlaceholder: 'search available locations',
-                position:'topright',
-            
-                initial: false,
-                
-                hideMarkerOnCollapse: true
-            
-                });
-                geo_json_a6c2346eba906e59e2ee7636582df271searchControl.on('search:locationfound', function(e) {
-                    geo_json_a6c2346eba906e59e2ee7636582df271.setStyle(function(feature){
-                        return feature.properties.style
-                    })
-                    
-                    if(e.layer._popup)
-                        e.layer.openPopup();
-                })
-                geo_json_a6c2346eba906e59e2ee7636582df271searchControl.on('search:collapsed', function(e) {
-                        geo_json_a6c2346eba906e59e2ee7636582df271.setStyle(function(feature){
-                            return feature.properties.style
-                    });
-                });
-            map_94a9f3a7666d86fda79c1a7681ce7a08.addControl( geo_json_a6c2346eba906e59e2ee7636582df271searchControl );
-
-        
-</script>
 </html>
