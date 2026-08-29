@@ -46,4 +46,9 @@ assert.match(siteCss, /\.map-error\[hidden\]\s*{[^}]*display:\s*none/s,
 assert.match(aboutHtml, /class="about-page"/, 'The About page must use the shared design system');
 assert.doesNotMatch(activeSite, /folium|leaflet|jquery|bootstrap/, 'Legacy Folium/Leaflet dependencies must not remain in the active site');
 
+assert.match(mapScript, /https:\/\/tiles\.openfreemap\.org\/styles\/dark/,
+  'The index map must use the OpenFreeMap dark style');
+assert.doesNotMatch(mapScript, /cartocdn|carto-dark/i,
+  'The former CARTO basemap must not remain in the index map');
+
 console.log(`Validated ${csv.length - 1} OSWM nodes and the static MapLibre site.`);
