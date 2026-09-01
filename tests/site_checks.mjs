@@ -44,6 +44,8 @@ assert.doesNotMatch(mapScript, /maplibregl\.supported\(/,
 assert.match(siteCss, /\.map-error\[hidden\]\s*{[^}]*display:\s*none/s,
   'The map error must stay hidden unless map initialization fails');
 assert.match(aboutHtml, /class="about-page"/, 'The About page must use the shared design system');
+assert.match(aboutHtml, new RegExp(`<strong id="about-node-count">${csv.length - 1}</strong>`),
+  'The About page node count must match the registry');
 assert.doesNotMatch(activeSite, /folium|leaflet|jquery|bootstrap/, 'Legacy Folium/Leaflet dependencies must not remain in the active site');
 
 assert.match(mapScript, /https:\/\/tiles\.openfreemap\.org\/styles\/dark/,
